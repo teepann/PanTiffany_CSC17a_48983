@@ -1,0 +1,24 @@
+Calculate the mean, median and mode and an additional 3 problems from Chapter 9.
+
+Flowchart the mode function.
+
+Given a repeated set array such as {0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,etc...} of a chosen length, output the mean, median mode, max frequency and number of modes for the set.
+
+Utilize dynamic array allocation to size the modal array.
+
+Create 3 functions
+
+float mean(int [],int),
+float median(int [],int),
+int *mode(int [],int)
+
+where the array returned from the mode is {number of modes, max frequency, mode1, mode2, .... , modeN} sized as 
+number of modes + 2
+
+Create a Github repository using LastnameFirstname_CIS17a_43950
+
+Finally create folders of Hmwk, Book, Lab, Proj, Class
+
+Place assignments in the proper folders.
+
+Submit the zipped file here and copy yourself on an email to mark.lehr@rcc.edu with subject:  Lastname, Firstname - Assignment 2 - 48983
