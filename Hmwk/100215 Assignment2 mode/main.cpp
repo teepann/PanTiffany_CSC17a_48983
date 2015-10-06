@@ -67,7 +67,7 @@ int* mode(int numbers[], int size)
     sort(numbers, size); //calls sort function to sort array
     
     //find the maximum frequency:
-    for(int i = 0; i< size; i++){////////////size-1??
+    for(int i = 0; i< size; i++){
         currentElement= numbers[i]; //set currentElement to the ith element in numbers
         int j=i+1; //check if the next element in numbers is the same as currentElement
         while (numbers[j]== currentElement){ //if it is, then continue checking and add a count to the frequency

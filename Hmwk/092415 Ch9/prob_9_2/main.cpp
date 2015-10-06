@@ -15,8 +15,9 @@ using namespace std; //utilize standard name-space directly
 //User Libraries
 //Global Constants
 //Function Prototypes
- void sort(float array[], int size);
- float averageScore (float array[], int size);
+ void sort(float *array, int size);
+ float averageScore (float *array, int size);
+ float *input(int size);
 /*
  * This program dynamically allocates an array large enough to hold
  * a user-defined number of test scores. Once all the scores are entered,
@@ -30,21 +31,9 @@ using namespace std; //utilize standard name-space directly
 int main(int argc, char** argv) {
     
     int size;
-    float num;
     cout<<"Enter the number of scores you will input"<<endl; //prompt users for number of integers in data set
     cin>> size;
-    float scores[size];
-    cout<<"Enter in test scores"<<endl; //input integer data set
-    int index=0;
-    while(index<size) { //as user is inputting integers, they are stored into numbers[]
-        cin>>num;
-        if(num>0){
-            scores[index]=num;
-            index++;
-        }
-        else //prompt use to enter positive number if they input negative
-            cout<<"Please enter a positive score"<<endl;
-    }
+    float *scores = input(int size);
     
     sort(scores, size); //sorts the scores in ascending order
     float avgScore= averageScore(scores, size); //returns the average score
@@ -58,8 +47,24 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+float *input(int size){
+    float num;    
+    float *scores = new float[size];
+    cout<<"Enter in test scores"<<endl; //input integer data set
+    int index=0;
+    while(index<size) { //as user is inputting integers, they are stored into scores[]
+        cin>>num;
+        if(num>0){ //checks if number entered is positive
+            scores[index]=num;
+            index++;
+        }
+        else //prompt use to enter positive number if they input negative
+            cout<<"Please enter a positive score"<<endl;
+    }
+    return scores;
+}
 //function definition of calculating average score
-float averageScore(float array[], int size){
+float averageScore(float *array, int size){
     float totalSum=0;
     for(int i = 0; i< size; i++){ 
         totalSum += array[i]; //add the sum of each score in the array
@@ -68,9 +73,10 @@ float averageScore(float array[], int size){
 }
 
 //function definition of sort- selection sort
-void sort(float array[], int size)
+void sort(float *array, int size)
 {
-    int startScan, minIndex, minValue;
+    int startScan, minIndex;
+    float minValue;
     for (startScan =0; startScan < (size -1); startScan++){
         minIndex = startScan; 
         minValue = array[startScan];
