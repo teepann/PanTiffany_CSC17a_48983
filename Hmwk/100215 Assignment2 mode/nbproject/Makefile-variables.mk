@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=Cygwin_4.x-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Debug=mode
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/mode
-CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Debug=mode.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/mode.tar
+CND_PLATFORM_Debug=MinGW-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
+CND_ARTIFACT_NAME_Debug=100215_assignment2_mode
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/100215_assignment2_mode
+CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
+CND_PACKAGE_NAME_Debug=100215assignment2mode.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/100215assignment2mode.tar
 # Release configuration
-CND_PLATFORM_Release=Cygwin_4.x-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=mode
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/mode
-CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=mode.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/mode.tar
+CND_PLATFORM_Release=MinGW-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
+CND_ARTIFACT_NAME_Release=100215_assignment2_mode
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/100215_assignment2_mode
+CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
+CND_PACKAGE_NAME_Release=100215assignment2mode.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/100215assignment2mode.tar
 #
 # include compiler specific variables
 #

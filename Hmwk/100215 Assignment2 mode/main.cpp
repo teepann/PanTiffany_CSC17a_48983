@@ -8,33 +8,34 @@
 //System Libraries
 #include <iostream> //input/output stream library
 #include <cstdlib> //C Standard Library
-
 using namespace std; //utilize standard name-space directly 
 
 //User Libraries
 //Global Constants
 //Function Prototypes
 void sort(int array[], int size);
-int* mode(int mode[], int n);
+int* mode(int [], int);
+float mean(int [], int);
+float median(int[], int);
 
 /*
  * Mode array may have nothing, 1 mode, or many
  */
 int main(int argc, char** argv) {
     
-//    int size=24;
-//    int numbers[size];
-//    for(int i=0; i<size; i++){
-//        numbers[i]=i%5;
-//    }
-    int size;
-    cout<<"Enter the number of integers you will input"<<endl; //prompt users for number of integers in data set
-    cin>> size;
+    int size=24;
     int numbers[size];
-    cout<<"Enter in your integer values"<<endl; //input integer data set
-    for (int i= 0; i< size; i++){ //as user is inputting integers, they are stored into numbers[]
-        cin>>numbers[i];
+    for(int i=0; i<size; i++){
+        numbers[i]=i%5;
     }
+//    int size;
+//    cout<<"Enter the number of integers you will input"<<endl; //prompt users for number of integers in data set
+//    cin>> size;
+//    int numbers[size];
+//    cout<<"Enter in your integer values"<<endl; //input integer data set
+//    for (int i= 0; i< size; i++){ //as user is inputting integers, they are stored into numbers[]
+//        cin>>numbers[i];
+//    }
     
     int *modeArray= mode(numbers, size); //create an array of modes
     int numModes= modeArray[0]; //retrieve the number of modes
@@ -51,6 +52,9 @@ int main(int argc, char** argv) {
         for(int i = 2; i<numModes+2; i++){
             cout<<modeArray[i]<<" ";
         }
+        cout<<endl;
+        cout<<"The mean is: "<<mean(numbers, size)<<endl;
+        cout<<"The median is: "<<median(numbers, size)<<endl;
     }
     return 0;
 }
@@ -115,6 +119,23 @@ int* mode(int numbers[], int size)
     return modeArray;
 }
 
+float mean(int numbers[], int size){
+    float sum = 0.0;
+    for(int i = 0; i< size; i++){
+        //sum of all numbers in the array
+        sum+=numbers[i];
+    }
+    return sum/size; //returns average 
+}
+
+float median(int numbers[], int size){
+    if (size%2==0) //if there's an even number of elements
+        //return average of the middle two numbers
+        return (float)(numbers[size/2] + numbers[size/2 + 1])/2;
+    else  //if there's an odd number of elements
+        //return the middle number
+        return numbers[size/2 + 1];
+}
 //function definition of sort- selection sort
 void sort(int array[], int size)
 {
