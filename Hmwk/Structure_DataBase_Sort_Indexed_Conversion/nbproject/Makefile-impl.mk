@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Structure_DataBase_Sort_Indexed
+PROJECTNAME=Structure_DataBase_Sort_Indexed_Conversion
 
 # Active Configuration
 DEFAULTCONF=Debug
