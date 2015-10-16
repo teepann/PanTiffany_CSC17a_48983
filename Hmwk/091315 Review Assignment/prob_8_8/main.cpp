@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
 /*
 * Definition of function linearSearch.
 *
-*/
+*/ 
 int linearSearch(int list[], int numElems, int value)
 {
 	int count = 0; // used to keep count of comparison
