@@ -1,32 +1,44 @@
-/* 
- * File:   prob_3_12.cpp
- * Author: Tiffany Pan
- * Created on September 8, 2015, 3:44 PM
- * Purpose: convert Celsius temperatures to Fahrenheit
- * Homework: Complete problem 3.12
- */
+/*
+* File: main.cpp
+* Author: Tiffany Pan
+* Date: September 13, 2015
+* Assignment: Problem 3.12 Celsius to Fahrenheit
+* Directions: Write a program that converts Clsius temperatures to Fahrenheit temperatures. 
+* The formula is F = 9/5C + 32
+* F is the Fahrenheit temperature, and C is the Celsius temperature
+*/
 
 //System Libraries
-#include <iostream> //input/output stream Library
-using namespace std; //utilize standard name-space directly
+#include <iostream>
+using namespace std;
 
 //User Libraries
 
 //Global Constants
 
-//Function Prototypes 
+//Function Prototypes
 
-/*
- * Celsius to Fahrenheit
- */
+//Execution begins here
 int main(int argc, char** argv) {
-    float celsius;
-    float fahrenheit;
-    cout<<"Enter temperature in Celsius\n";
-    cin>>celsius;
-    //formula that converts celsius to fahrenheit is F = 9/5C+32
-    fahrenheit= (9.0/5.0)*celsius+32.0; 
-    cout<<celsius<<" Celsius in Fahrenheit is "<< fahrenheit<<endl;
-    return 0;
+	//Variable declarations
+	float celsius;
+	float fahrenheit;
+
+	//prompt user for a celcius temperature
+	cout << "Enter temperature in Celsius\n";
+	cin >> celsius;
+
+	//convert celsius to fahrenheit with the given formula
+	fahrenheit = (9.0 / 5) * celsius + 32.0;
+
+	//return converted temperature in celsius
+	cout << celsius << " degrees Celsius is " << fahrenheit << " degrees Fahrenheit." << endl;
+
+	system("Pause");
+	return 0;
 }
 
+/*
+* Definition of function.
+*
+*/
