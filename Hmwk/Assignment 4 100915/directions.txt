@@ -1,0 +1,9 @@
+Solve the 5 problems from Chapter 11, including the 1 off the syllabus.
+
+Also, take from the class repository, the program using a structure/indexed array to perform an array sort.
+
+Convert the structure notation to the dot operator, and the array notation to pointer notation.
+
+While you are solving make use of github regularly.
+
+Post the results here, send and email which copies yourself to mark.lehr@rcc.edu with subject:  Lastname, Firstname - Assignment 4 - 48939

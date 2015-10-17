@@ -1,0 +1,21 @@
+Download any further instructions then submit the project in the time required.  
+
+Refer to the calendar for submission date.  Refer, to the Project 1 writeup and examples of previous students submissions.  I am looking for your expertise in
+
+     Memory allocation
+
+     Functions with structures, used as input and output
+
+     Pointers with arrays and arrays of structures, internally as well as externally.
+
+     Use of character arrays as well as string objects.
+
+     Reading and wrting to binary files.
+
+Basically anything in Chapters 9 to 12 from Gaddis.
+
+Also, use doxygen to document your code in addition to flowcharting.
+
+Send me an email attaching the writeup and the program to mark.lehr@rcc.edu with the subject LastName,FirstName - Project 1 - 48983
+
+Utilize Github and make sure I am a collaborator as with all the homeworks.
