@@ -1,25 +1,9 @@
-/* 
- * File:   prob_12_11.cpp
- * Author: Tiffany Pan
- * Created on September 30, 2015, 12:53 PM
- * Purpose: "corporate sales data output"
- * Homework: Complete this assignment
- */
-
-//System Libraries
-#include <iostream> //input/output stream library
-#include <string> //string library
-#include <iomanip> //input/output manipulation
-#include <cctype> //cctype library
-#include <cstdlib> //c standard library
-using namespace std; //utilize standard name-space directly 
- 
-//User Libraries
-//Global Constants
-//Function Prototypes
-
 /*
- * write a program that uses a structure to store the following data
+ * File: main.cpp
+ * Author: Tiffany Pan
+ * Date: October 1, 2015
+ * Assignment: Problem 12.11
+ * Directions: write a program that uses a structure to store the following data
  * on a company division: 
  * Division Name: East, West, North, South
  * Quarter: 1, 2, 3, or 4
@@ -29,8 +13,25 @@ using namespace std; //utilize standard name-space directly
  * written to a file
  * input validation: no negative sales figures.
  */
+
+//System Libraries
+#include <iostream>
+using namespace std;
+
+//User Libraries
+
+//Global Constants
+
+//Function Prototypes
+
+//Execution begins here
 int main(int argc, char** argv) {
-    
-    return 0;
+   //Variable declarations
+
+   return 0;
 }
 
+/* 
+ * Definition of function.
+ *
+ */
