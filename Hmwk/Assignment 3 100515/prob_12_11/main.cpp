@@ -62,7 +62,6 @@ int main(int argc, char** argv) {
     if (salesFile) {
 
         for (int i = 0; i < Division::NUM_DIVISION; i++) {
-
             strcpy(currentSales.div.divName, Division::NAMES[i]);
 
             for (int j = 0; j < Quarter::NUM_QUARTER; j++) {

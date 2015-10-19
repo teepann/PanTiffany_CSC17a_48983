@@ -24,6 +24,25 @@ using namespace std;
 
 //User Libraries
 
+//Customer structure
+struct Address {
+    int number; //number
+    string city; //city
+    string state; //state
+    int zip; //ZIP
+};
+struct Date {
+    int month; //month
+    int day; //day of month
+    int year; //year
+};
+struct Customer{
+    string name; //name of customer
+    Address address; //customer's address   
+    int phone; //phone number
+    float balance; //account balance
+    Date date;
+};
 //Global Constants
 
 //Function Prototypes
@@ -31,7 +50,16 @@ using namespace std;
 //Execution begins here
 int main(int argc, char** argv) {
    //Variable declarations
-
+    const int NUM_CUSTOMERS = 10; //Number of customers
+    Customer customers[NUM_CUSTOMERS]; //array of structures
+    char option;
+    //menu
+    do {
+        cout << "Please select one of the following options: "
+                "A. Add a new customer"
+                "B. Edit a customer's information"
+                "C. "
+    } while (option != 'E');
    return 0;
 }
 
