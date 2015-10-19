@@ -28,10 +28,9 @@ int main(int argc, char** argv) {
     //prompts user to enter a string
     cout << "Please enter a string of words: \n";
     getline(cin, data);
-    
+    cout << data;
     //outputs the average number of letters in each word
-    cout << "The average number of letters in each word for the string \"" 
-            << data << "\" is: " << getAverage(data.c_str());
+    cout << " has an average number of " << getAverage(data.c_str()) << " letters in each word" << endl;
    return 0;
 }
 
