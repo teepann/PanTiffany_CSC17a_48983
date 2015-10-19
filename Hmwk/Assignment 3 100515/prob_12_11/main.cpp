@@ -23,11 +23,7 @@ using namespace std;
 
 //User Libraries
 
-//Global Constants
-
-//Function Prototypes
-
-//Division Names struct
+//Division Names structure
 typedef struct DIVISION {
     const static int NUM_DIVISION = 4;
     const static char* NAMES[NUM_DIVISION];
@@ -35,7 +31,7 @@ typedef struct DIVISION {
 } Division;
 const char* Division::NAMES[] = {"East", "West", "North", "South"};
 
-//Quarter struct
+//Quarter structure
 typedef struct QUARTER {
     const static int NUM_QUARTER = 4;
     const static int QUARTERS[NUM_QUARTER];
@@ -76,12 +72,9 @@ int main(int argc, char** argv) {
                 if (currentSales.quartSale < 0) {
                     currentSales.quartSale = 0;
                 }
-
                 salesFile.write(reinterpret_cast<char*> (&currentSales), sizeof (currentSales));
-
             }
         }
-
         salesFile.close();
     } else {
         cerr << "File I/O error!";

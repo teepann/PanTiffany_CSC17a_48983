@@ -9,6 +9,7 @@
 
 //System Libraries
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 //User Libraries
@@ -16,9 +17,9 @@ using namespace std;
 //Global Constants
 
 //Function Prototypes
-void arrSelectSort(int *[], int);
-void showArray(const int [], int);
-void showArrPtr(int *[], int);
+void arrSelectSort(int *, int);
+void showArray(const int*, int);
+void showArrPtr(int *, int);
 
 //Execution begins here
 int main(int argc, char** argv) {
@@ -30,8 +31,8 @@ int main(int argc, char** argv) {
                                     10, 15, 10, 5, 10};
     // An array of pointers to int.
     int *arrPtr[NUM_DONATIONS] = {NULL, NULL, NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, NULL};
+                                  NULL, NULL, NULL, NULL, NULL,
+                                  NULL, NULL, NULL, NULL, NULL};
     
         // Each element of arrPtr is a pointer to int. Make each
     // element point to an element in the donations array.
@@ -58,8 +59,7 @@ int main(int argc, char** argv) {
  * sort, arr will point to the elements of the 2nd array in 
  * ascending order.
  */
-void arrSelectSort(int *arr[], int size)
-{
+void arrSelectSort(int *arr int size) {
     int startScan, maxIndex;
     int *maxElem;
 
@@ -83,7 +83,7 @@ void arrSelectSort(int *arr[], int size)
  * This function displays the contents of arr.
  * size is the number of elements
  */
-void showArray(const int arr[], int size)
+void showArray(const int arr, int size)
 {
     for(int count = 0; count < size; count++)
         cout<<arr[count]<<" ";
@@ -95,7 +95,7 @@ void showArray(const int arr[], int size)
  * This function displays the contents of the array points to
  * by arr. size is the number of elements.
  */
-void showArrptr(int *arr[], int size)
+void showArrptr(int *arr, int size)
 {
     for (int count = 0; count < size; count++)
         cout<< *(arr[count]) << " ";
