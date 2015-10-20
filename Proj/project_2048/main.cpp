@@ -15,9 +15,9 @@
 
 using namespace std;
 
-//int pressEnter;
-//int randomIndex(int);
-
+int pressEnter;
+int randomIndex(int);
+class Game;
 //GameAI structure
 struct GameAI {
     int response;
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
     {
         exec.displayGrid();
         exec.keyPress();
-        exec.logicFlow();
+        exec.logicFlow(&exec);
         exec.gameEndCheck(&exec);
     }
     return 0;
@@ -81,7 +81,7 @@ int main(int argc, char** argv)
  * Definition of function.
  *
  */
-void keyPress()
+void GameAI::keyPress()
 {
     system("stty raw");
     cin >> control;
@@ -92,7 +92,7 @@ void keyPress()
  * Definition of function.
  *
  */
-void logicFlow(Game *execute)
+void GameAI::logicFlow(Game *execute)
 {
     switch(control)
     {
@@ -106,7 +106,7 @@ void logicFlow(Game *execute)
             execute->fillSpace();
             execute->findGreatestTile();
             execute->displayGrid();
-            usleep(1000*160);
+            sleep(1000*160);
             
             if(execute->full() && destroy)
             {
@@ -124,7 +124,7 @@ void logicFlow(Game *execute)
                 break;
             }
         case 'u':
-            if (execute.blockMoves())
+            if (execute->blockMoves())
             {
                 score -= plus;
             }
@@ -150,7 +150,7 @@ void logicFlow(Game *execute)
  * Definition of function.
  *
  */
-void gameEndCheck(Game *screen)
+void GameAI::gameEndCheck(Game *screen)
 {
     if (max == win)
     {
@@ -187,7 +187,7 @@ void gameEndCheck(Game *screen)
  * Definition of function.
  *
  */
-void startGrid()
+void GameAI::startGrid()
 {
     int i, j;
     plus = 0;
@@ -206,17 +206,17 @@ void startGrid()
     
     grid[i][j] = 2;
     
-//    i = randomIndex(4);
-//    j = randomIndex(4);
-//    
-//    grid[i][j] = 2;
+    i = randomIndex(4);
+    j = randomIndex(4);
+    
+    grid[i][j] = 2;
 }
 
 /* 
  * Definition of function.
  *
  */
-void displayGrid()
+void Game::displayGrid()
 {
     system("clear");
     cout << "\n :: [  THE 2048 PUZZLE  ]:: \t\t\t\tDeveloped by Tiffany\n\n\t";
@@ -267,7 +267,7 @@ int randomIndex(int x)
  * Definition of function.
  *
  */
-void backupGrid()
+void GameAI::backupGrid()
 {
     for (int i = 0; i < 4; i++)
     {
@@ -282,7 +282,7 @@ void backupGrid()
  * Definition of function.
  *
  */
-void fillSpace()
+void GameAI::fillSpace()
 {
     switch(control)
     {
@@ -291,20 +291,326 @@ void fillSpace()
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    //line 262
+                    if (!grid[i][j])
+                    {
+                        for (int k = j + 1; k < 4; k++)
+                        {
+                            if (grid[k][i])
+                            {
+                                grid[j][i] = grid [k][i];
+                                grid[k][i] = 0;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            break;
+        case 's': 
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 3; j >= 0; j--)
+                {
+                    if (!grid[j][i])
+                    {
+                        for (int k = j - 1; k>=0; k--)
+                        {
+                            if (grid[k][i])
+                            {
+                                grid[j][i] = grid[k][i];
+                                grid[k][i] = 0;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        case 'a': 
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (!grid[i][j])
+                    {
+                        for (int k = j + 1; k < 4; k++)
+                        {
+                            if (grid[i][k])
+                            {
+                                grid[i][j] = grid [i][k];
+                                grid[i][k] = 0;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        case 'd': 
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 3; j >= 0; j--)
+                {
+                    if (!grid[i][j])
+                    {
+                        for (int k = j - 1; k>=0; k--)
+                        {
+                            if (grid[i][k])
+                            {
+                                grid[i][j] = grid[i][k];
+                                grid[i][k] = 0;
+                                break;
+                            }
+                        }
+                    }
                 }
             }
     }
 }
+
 /* 
  * Definition of function.
  *
  */
+void GameAI::updateGrid()
+{
+    plus = 0;
+    destroy = 1;
+    switch(control)
+    {
+        case 'w': 
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (grid[j][i] && grid [j][i] == grid [j+1][i])
+                    {
+                        destroy = 0;
+                        grid[j][i] += grid[j+1][i];
+                        grid[j+1][i] = 0;
+                        plus += (((log2(grid[j][i]))-1)*grid[j][i]);
+                        score += (((log2(grid[j][i]))-1)*grid[j][i]); 
+                    }
+                }
+            }
+            break;
+        case 's': 
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 3; j > 0; j--)
+                {
+                    if (grid[j][i] && grid [j][i] == grid [j-1][i])
+                    {
+                        destroy = 0;
+                        grid[j][i] += grid[j-1][i];
+                        grid[j-1][i] = 0;
+                        plus += (((log2(grid[j][i]))-1)*grid[j][i]);
+                        score += (((log2(grid[j][i]))-1)*grid[j][i]); 
+                    }
+                }
+            }
+            break;
+        case 'a':
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (grid[i][j] && grid [i][j] == grid [i][j+1])
+                    {
+                        destroy = 0;
+                        grid[i][j] += grid[i][j+1];
+                        grid[i][j+1] = 0;
+                        plus += (((log2(grid[i][j]))-1)*grid[i][j]);
+                        score += (((log2(grid[i][j]))-1)*grid[i][j]); 
+                    }
+                }
+            }
+            break;
+        case 'd':
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 3; j > 0; j--)
+                {
+                    if (grid[i][j] && grid[i][j] == grid [i][j-1])
+                    {
+                        destroy = 0;
+                        grid[i][j] += grid[i][j-1];
+                        grid[i][j-1] = 0;
+                        plus += (((log2(grid[i][j]))-1)*grid[i][j]);
+                        score += (((log2(grid[i][j]))-1)*grid[i][j]); 
+                    }
+                }
+            }
+            break;
+    }
+}
+
 /* 
  * Definition of function.
  *
  */
+void GameAI::spawn()
+{
+    int i, j, k;
+    do {
+        i = randomIndex(4);
+        j = randomIndex(4);
+        k = randomIndex(10);
+    } while (grid[i][j]);   
+    
+    if (k < 2)
+    {
+        grid[i][j] = 4;
+    }
+    else 
+    {
+        grid[i][j] = 2;
+    }
+}
+
 /* 
  * Definition of function.
  *
  */
+void GameAI::findGreatestTile()
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (grid[i][j] > max)
+            {
+                max = grid[i][j];
+            }
+        }
+    }
+}
+
+/* 
+ * Definition of function.
+ *
+ */
+int GameAI::full()
+{
+    int k = 1;
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if(!grid[i][j])
+            {
+                k = 0;
+            }
+        }
+    }
+    return k;
+}
+
+/* 
+ * Definition of function.
+ *
+ */
+void Game::displayHelpScreen()
+{
+    system("clear");
+    cout << endl << "  ::[  THE 2048 PUZZLE  ]::\t\t\t\tDeveloped by SCM [-_-]";
+    char text[] = "> The game starts with 1 or 2 randomly placed number s in a 4x4 grid (16 cells).> Use the ";//???
+    for (int i = 0; text[i]; i++)
+    {
+        if (text[i] == '>')
+        {
+            sleep(1000*500);
+            cout << "\n\n\n";
+        }
+        cout << text[i];
+    }    
+}
+
+/* 
+ * Definition of function.
+ *
+ */
+void Game::displayWinScreen()
+{
+    system("clear");
+    cout << endl << endl;
+    cout << "\n\t\t\t  :: [  YOU MADE "<<win<<"!  ] ::"
+            << "\n\n\t\t\t  :: [ YOU WON THE GAME ] ::"
+            <<"\n\n\n\n\t\t\t TILE\t     SCORE\t    NAME";
+    printf("\n\n\t\t\t %4d\t    %6d\t    ",max,score);
+    cin >> name;
+    
+    cout << "\n\n\t\t> The maximum possible tile is 65,536 ! So go on :)";
+}
+
+/* 
+ * Definition of function.
+ *
+ */
+void Game::displayLoserScreen()
+{
+    system("clear");
+    
+    cout << "\n\n\n\t\t\t  :: [ G A M E  O V E R ] ::"
+         << "\n\n\n\n\t\t\t TILE\t     SCORE\t    NAME";
+    printf("\n\n\t\t\t %4d\t    %6d\t    ",max,score);
+    cin >> name;
+    
+    cout << "\n\n\t\t> The maximum possible score is 3,932,156 ! So close :p";
+}
+
+/* 
+ * Definition of function.
+ *
+ */
+char Game::displayTryAgainScreen(int lose)
+{
+    if (lose)
+    {
+        cout << "\n\n\n\t    > Would you like to try again "<<name<<" (y/n) ? :: ";
+    }
+    else
+    {
+        cout << "\n\n\n\t    > Would you like to continue playing "<<name<<" (y/n) ? :: ";
+    }
+    
+    system("stty raw");
+    cin >> option;
+    system("stty cooked");
+    
+    return option;
+}
+
+/* 
+ * Definition of function.
+ *
+ */
+void GameAI::undo()
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            grid[i][j] = bgrid[i][j];
+        }
+    }
+}
+
+/* 
+ * Definition of function.
+ *
+ */
+int GameAI::blockMoves()
+{
+    int k = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (bgrid[i][j] != grid[i][j])
+            {
+                k = 1;
+                break;
+            }
+        }
+    }
+    return k;
+}
