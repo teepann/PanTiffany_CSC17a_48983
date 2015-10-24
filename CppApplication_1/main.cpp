@@ -8,68 +8,72 @@
 //System Libraries
 #include <iostream>
 #include <ctime>
+#include <unistd.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cmath>
 
 using namespace std;
 
-struct Tile {
-    int max; //int value?    
-};
-struct Grid {
-    Tile grid[4][4];
-};
-
-struct Game {
-    int score;
-    int plus;
-    int win;
-    int max;
+int pressEnter;
+int randomIndex(int);
+class Game;
+//GameAI structure
+struct GameAI {
     int response;
     int destroy;
-    Grid grid;
-    Grid bgrid;
-    Input input;    
-    int randomIndex(int);
-    
-    int pressEnter;    
     char control;
-    char option;
-    string name;
+    
+    int max;
+    int win;
+    int plus;
+    int score;
+    int grid[4][4];
+    int bgrid[4][4];
+    
+    GameAI(): score(0), plus(0),win(2048), max(0),response(0),destroy(1) {}
+    
+    void logicFlow(Game*);
+    void gameEndCheck(Game*);
+    void keyPress();
+    void startGrid();
+    void updateGrid();
+    void fillSpace();
+    void spawn();
+    void findGreatestTile();
+    void backupGrid();
+    void undo();
+    
+    int full();
+    int blockMoves();    
 };
 
+//Game structure
+struct Game : GameAI {
+    char option;
+    string name;
+    
+    void displayGrid();
+    void displayHelpScreen();
+    void displayWinScreen();
+    void displayLoserScreen();
+    char displayTryAgainScreen(int);
+};
 //Function Prototypes
-void logicFlow(Game*);
-void gameEndCheck(Game*);
-void keyPress(Game*);
-void startGrid();
-void updateGrid();
-void fillSpace();
-void spawn();
-void findGreatestTile();
-void backupGrid();
-void undo();
-int full();
-int blockMoves();
-
-void displayGrid();
-void displayHelpScreen();
-void displayWinScreen();
-void displayLoserScreen();
-char displayTryAgainScreen(int);
 
 //Execution begins here
 int main(int argc, char** argv) 
 {
-    Game exec = {0, 0, 2048, 0, 0, 1};
+    Game exec;
     srand(time(NULL));
-    startGrid();
-    //not done here
+    exec.startGrid();
     
     while(1)
     {
-        displayGrid();
-        keyPress(&exec);
-        logicFlow(&exec);
-        gameEndCheck(&exec);
+        exec.displayGrid();
+        exec.keyPress();
+        exec.logicFlow(&exec);
+        exec.gameEndCheck(&exec);
     }
     return 0;
 }
@@ -78,10 +82,10 @@ int main(int argc, char** argv)
  * Definition of function.
  *
  */
-void keyPress(Game *game)
+void GameAI::keyPress()
 {
     system("stty raw");
-    cin >> game->control;
+    cin >> control;
     system("stty cooked");
 }
 
@@ -89,7 +93,7 @@ void keyPress(Game *game)
  * Definition of function.
  *
  */
-void logicFlow(Game *execute)
+void GameAI::logicFlow(Game *execute)
 {
     switch(control)
     {
@@ -97,48 +101,48 @@ void logicFlow(Game *execute)
         case 'a':
         case 's':
         case 'd':
-            backupGrid();
-            fillSpace();
-            updateGrid();
-            fillSpace();
-            findGreatestTile();
-            displayGrid();
+            execute->backupGrid();
+            execute->fillSpace();
+            execute->updateGrid();
+            execute->fillSpace();
+            execute->findGreatestTile();
+            execute->displayGrid();
             sleep(1000*160);
             
-            if(full() && execute->destroy)
+            if(execute->full() && destroy)
             {
-                execute->response = -1;
+                response = -1;
                 break;
             }
-            else if (blockMoves())
+            else if (execute->blockMoves())
             {
-                spawn();
+                execute->spawn();
                 break;
             }
             else
             {
-                execute->response = 0;
+                response = 0;
                 break;
             }
         case 'u':
-            if (blockMoves())
+            if (execute->blockMoves())
             {
-                execute->score -= plus;
+                score -= plus;
             }
-            undo();
+            execute->undo();
             break;
         case 'r':
-            startGrid();
-            execute->score = 0;
-            execute->plus = 0;
+            execute->startGrid();
+            score = 0;
+            plus = 0;
             break;
         case 'q':
-            execute->response = -1;
+            response = -1;
             break;
         case'h':
-            displayHelpScreen();
-            execute->pressEnter = getchar();
-            displayGrid();
+            execute->displayHelpScreen();
+            pressEnter = getchar();
+            execute->displayGrid();
             break;
     }
 }
@@ -147,35 +151,35 @@ void logicFlow(Game *execute)
  * Definition of function.
  *
  */
-void gameEndCheck(Game *screen)
+void GameAI::gameEndCheck(Game *screen)
 {
-    if (max == screen->win)
+    if (max == win)
     {
-        displayWinScreen();
+        screen->displayWinScreen();
         
-        if(displayTryAgainScreen(0) == 'n')
+        if(screen->displayTryAgainScreen(0) == 'n')
         {
-            screen->response = -1;
+            response = -1;
         }
         else
-            screen->win*=2;
+            win*=2;
     }
-    else if (screen->response == -1)
+    else if (response == -1)
     {
-        displayLoserScreen();
+        screen->displayLoserScreen();
         
-        if(displayTryAgainScreen(1) == 'y')
+        if(screen->displayTryAgainScreen(1) == 'y')
         {
-            startGrid();
-            screen->response = 0;
+            screen->startGrid();
+            response = 0;
         }
     }
     
-    if (screen->response == -1)
+    if (response == -1)
     {
         cout << "\n\n\t\t > Thank you for playing. "
                 << "\n\n\n\t\t\t\t\t\t DEVELOPED BY \n\n";
-        screen->pressEnter = getchar();
+        pressEnter = getchar();
         exit(0);
     }
 }
@@ -184,11 +188,11 @@ void gameEndCheck(Game *screen)
  * Definition of function.
  *
  */
-void startGrid(Game *game)
+void GameAI::startGrid()
 {
     int i, j;
-    game->plus = 0;
-    game->score = 0;
+    plus = 0;
+    score = 0;
     max = 0;
     
     for (i= 0; i < 4; i++)
@@ -213,7 +217,7 @@ void startGrid(Game *game)
  * Definition of function.
  *
  */
-void displayGrid()
+void Game::displayGrid()
 {
     system("clear");
     cout << "\n :: [  THE 2048 PUZZLE  ]:: \t\t\t\tDeveloped by Tiffany\n\n\t";
@@ -264,7 +268,7 @@ int randomIndex(int x)
  * Definition of function.
  *
  */
-void backupGrid()
+void GameAI::backupGrid()
 {
     for (int i = 0; i < 4; i++)
     {
@@ -279,7 +283,7 @@ void backupGrid()
  * Definition of function.
  *
  */
-void fillSpace()
+void GameAI::fillSpace()
 {
     switch(control)
     {
@@ -367,7 +371,7 @@ void fillSpace()
  * Definition of function.
  *
  */
-void updateGrid()
+void GameAI::updateGrid()
 {
     plus = 0;
     destroy = 1;
@@ -444,7 +448,7 @@ void updateGrid()
  * Definition of function.
  *
  */
-void spawn()
+void GameAI::spawn()
 {
     int i, j, k;
     do {
@@ -467,7 +471,7 @@ void spawn()
  * Definition of function.
  *
  */
-void findGreatestTile()
+void GameAI::findGreatestTile()
 {
     for (int i = 0; i < 4; i++)
     {
@@ -485,7 +489,7 @@ void findGreatestTile()
  * Definition of function.
  *
  */
-int full()
+int GameAI::full()
 {
     int k = 1;
     for (int i = 0; i < 4; i++)
@@ -505,7 +509,7 @@ int full()
  * Definition of function.
  *
  */
-void displayHelpScreen()
+void Game::displayHelpScreen()
 {
     system("clear");
     cout << endl << "  ::[  THE 2048 PUZZLE  ]::\t\t\t\tDeveloped by SCM [-_-]";
@@ -525,7 +529,7 @@ void displayHelpScreen()
  * Definition of function.
  *
  */
-void displayWinScreen()
+void Game::displayWinScreen()
 {
     system("clear");
     cout << endl << endl;
@@ -542,7 +546,7 @@ void displayWinScreen()
  * Definition of function.
  *
  */
-void displayLoserScreen()
+void Game::displayLoserScreen()
 {
     system("clear");
     
@@ -558,7 +562,7 @@ void displayLoserScreen()
  * Definition of function.
  *
  */
-char displayTryAgainScreen(int lose)
+char Game::displayTryAgainScreen(int lose)
 {
     if (lose)
     {
@@ -580,7 +584,7 @@ char displayTryAgainScreen(int lose)
  * Definition of function.
  *
  */
-void undo()
+void GameAI::undo()
 {
     for (int i = 0; i < 4; i++)
     {
@@ -595,7 +599,7 @@ void undo()
  * Definition of function.
  *
  */
-int blockMoves()
+int GameAI::blockMoves()
 {
     int k = 0;
     for (int i = 0; i < 4; i++)

@@ -2,8 +2,7 @@
  * File:   mode.cpp
  * Author: Tiffany Pan
  * Created on September 15, 2015, 12:53 PM
- * Purpose: determine the mode in a given array of integers
- * Homework: Complete this assignment
+ * Purpose: determine the mode, median, mean in a given array of integers
  */
 //System Libraries
 #include <iostream> //input/output stream library
