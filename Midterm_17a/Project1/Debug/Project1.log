@@ -1,18 +1,18 @@
-﻿Build started 10/25/2015 9:20:34 PM.
-     1>Project "C:\Users\Tiffany\Desktop\Project1\Project1\Project1.vcxproj" on node 2 (Build target(s)).
+﻿Build started 10/25/2015 11:09:15 PM.
+     1>Project "C:\Users\Tiffany\Desktop\PanTiffany_CSC17a_48983\Midterm_17a\Project1\Project1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\tiffany\desktop\project1\project1\main.cpp(276): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\tiffany\desktop\project1\project1\main.cpp(388): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-     1>c:\users\tiffany\desktop\project1\project1\main.cpp(403): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-     1>c:\users\tiffany\desktop\project1\project1\main.cpp(418): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-     1>c:\users\tiffany\desktop\project1\project1\main.cpp(433): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tiffany\desktop\pantiffany_csc17a_48983\midterm_17a\project1\main.cpp(276): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\tiffany\desktop\pantiffany_csc17a_48983\midterm_17a\project1\main.cpp(388): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tiffany\desktop\pantiffany_csc17a_48983\midterm_17a\project1\main.cpp(403): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tiffany\desktop\pantiffany_csc17a_48983\midterm_17a\project1\main.cpp(418): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+     1>c:\users\tiffany\desktop\pantiffany_csc17a_48983\midterm_17a\project1\main.cpp(433): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tiffany\Desktop\Project1\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Tiffany\Desktop\Project1\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tiffany\Desktop\Project1\Debug\Project1.lib" /MACHINE:X86 Debug\Main.obj
-         Project1.vcxproj -> C:\Users\Tiffany\Desktop\Project1\Debug\Project1.exe
-     1>Done Building Project "C:\Users\Tiffany\Desktop\Project1\Project1\Project1.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tiffany\Desktop\PanTiffany_CSC17a_48983\Midterm_17a\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Tiffany\Desktop\PanTiffany_CSC17a_48983\Midterm_17a\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tiffany\Desktop\PanTiffany_CSC17a_48983\Midterm_17a\Debug\Project1.lib" /MACHINE:X86 Debug\Main.obj
+         Project1.vcxproj -> C:\Users\Tiffany\Desktop\PanTiffany_CSC17a_48983\Midterm_17a\Debug\Project1.exe
+     1>Done Building Project "C:\Users\Tiffany\Desktop\PanTiffany_CSC17a_48983\Midterm_17a\Project1\Project1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.62
+Time Elapsed 00:00:05.34

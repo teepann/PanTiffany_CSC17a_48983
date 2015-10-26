@@ -1,4 +1,12 @@
+/*
+ * File: main.cpp
+ * Author: Tiffany Pan
+ * Date: October 15, 2015
+ * Course: CSC 17A
+ * Midterm Project: 2048
+ */
 
+//System Libraries
 #include <iostream>
 #include <ctime>
 #include <string>
