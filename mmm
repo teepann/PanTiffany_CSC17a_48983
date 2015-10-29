@@ -1,8 +1,15 @@
-#include <iostream> //input/output stream library
-#include <cstdlib> //C Standard Library
-using namespace std; //utilize standard name-space directly 
+/* 
+ * File:   main.cpp
+ * Author: rcc
+ *
+ * Created on October 29, 2015, 11:30 AM
+ */
 
-//User Libraries
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
 struct statsResult
 {
     float avg;
@@ -12,22 +19,35 @@ struct statsResult
     int maxFreq; //max frequency of modes
 };
 
+//function prototypes
 statsResult *avgMedMode(int *,int); 
 void printStat(statsResult*);
-
 void sort(int array[], int size);
 
 /*
- * Mode array may have nothing, 1 mode, or many
+ * 
  */
+int main(int argc, char** argv) {
+    int size=24;
+    int numbers[size];
+    for(int i=0; i<size; i++){
+        numbers[i]=i%5;
+    }
+    
+    printStat(avgMedMode(numbers, size));
+    
+    return 0;
+}
+
 statsResult *avgMedMode(int * numbers,int size)
 {
-    statsResult *test;
-    int maxFreq= 0, //max frequency of a number in the data set
-        numModes= 0, //how many modes there are in the data set
-        freq= 1; //frequency counter for each number in the data set
-    int currentElement; //current element of the data set's array in the loop    
-    sort(numbers, size); //calls sort function to sort array
+    statsResult *stats;
+    int maxFreq = 0; 
+    int numModes = 0;
+    int freq = 1;
+    int currentElement;
+    
+    sort(numbers,size);
     
     //find the maximum frequency:
     for(int i = 0; i< size; i++){
@@ -43,6 +63,7 @@ statsResult *avgMedMode(int * numbers,int size)
         }
         freq= 1;//reset freq to 1
     }
+    stats->maxFreq = maxFreq;
     
     //find number of modes:
     for(int i = 0; i<size; i++){
@@ -58,15 +79,13 @@ statsResult *avgMedMode(int * numbers,int size)
         }
         freq=1;//reset frequency counter to 1
     }
+    stats->nModes = numModes;
     
-    // add modes to modeArray:
-    int *modeArray = new int[numModes+2]; //create array of modes
-    modeArray[0]=numModes; //set the first element in modeArray as number of modes
-    modeArray[1]=maxFreq; //set the second element in modeArrays as the maximum frequency
-    int index=1; //create an index counter for the modeArray
-    for(int i = 0; i<size; i++){
-        currentElement= numbers[i];
-        int j=i+1;
+    int index=-1;
+    for (int i = 0; i< size; i++)
+    {
+        currentElement = numbers[i];
+        int j = i+1;
         while(numbers[j]==currentElement){
             freq++;
             j++;
@@ -74,39 +93,34 @@ statsResult *avgMedMode(int * numbers,int size)
         i= j-1;
         if(freq>1 && freq==maxFreq){  //if frequency of currentElement is same as the maxFreq            
             index++;
-            modeArray[index]=numbers[i]; //add that currentElement to modeArray            
-            test->mode[index-2] = numbers[i];
+            stats->mode[index]=numbers[i]; //add that currentElement to modeArray                  
         }
         freq=1;//reset frequency counter to 1
     }
-    
-    test->maxFreq = modeArray[1];
-    test->nModes = modeArray[0];
-    
     
     float sum = 0.0;
     for(int i = 0; i< size; i++){
         //sum of all numbers in the array
         sum+=numbers[i];
     }
-    test->avg = sum/size; //returns average 
+    stats->avg = sum/size; //returns average 
     
     
     if (size%2==0) //if there's an even number of elements
         //return average of the middle two numbers
-        test->median = (float)(numbers[size/2] + numbers[size/2 + 1])/2;
+        stats->median = (float)(numbers[size/2] + numbers[size/2 + 1])/2;
     else  //if there's an odd number of elements
         //return the middle number
-        test->median = numbers[size/2 + 1];    
-    
+        stats->median = numbers[size/2 + 1];  
 }
+
 void printStat(statsResult* stats)
 {
-    if(!stats->nModes){ //if numModes =0, there is no mode
+    if(stats->nModes == 0){ //if numModes =0, there is no mode
         cout<<"This data set has no modes\n";
     }
     else { 
-        cout<<"There are "<<stats->nModes<<" mode(s)."<<endl; //print out number of modes
+        cout<<"There are "<< stats->nModes <<" mode(s)."<<endl; //print out number of modes
         cout<<"Each mode appears "<<stats->maxFreq<<" times."<<endl; //print out the max frequency
         cout<<"The mode(s) are: "; //print out the modes
         for(int i = 2; i<stats->nModes+2; i++){
@@ -117,22 +131,6 @@ void printStat(statsResult* stats)
         cout<<"The median is: "<<stats->median<<endl;
     }
 }
-int main(int argc, char** argv) {
-    
-    int size=24;
-    int numbers[size];
-    for(int i=0; i<size; i++){
-        numbers[i]=i%5;
-    }
-    
-    statsResult *test;
-    //FIX THE SIZE ISSUE@#4#$@!!!!
-    test = avgMedMode(numbers, size);
-    printStat(test);
-    
-    return 0;
-}
-
 
 //function definition of sort- selection sort
 void sort(int array[], int size)
