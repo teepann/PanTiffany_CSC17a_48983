@@ -167,6 +167,7 @@ void problem5(){
 
 void problem6(){
     cout<<"In problem # 6"<<endl<<endl;
+    cout << "2.125 in binary is 10";
 }
 
 void def(int inN){
