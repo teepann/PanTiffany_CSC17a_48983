@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=project_2048
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/project_2048
+CND_ARTIFACT_NAME_Debug=midterm_17a
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/midterm_17a
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=project2048.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/project2048.tar
+CND_PACKAGE_NAME_Debug=midterm17a.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/midterm17a.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=project_2048
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/project_2048
+CND_ARTIFACT_NAME_Release=midterm_17a
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/midterm_17a
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=project2048.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/project2048.tar
+CND_PACKAGE_NAME_Release=midterm17a.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/midterm17a.tar
 #
 # include compiler specific variables
 #

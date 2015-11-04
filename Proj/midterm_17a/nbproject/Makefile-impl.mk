@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=project_2048
+PROJECTNAME=midterm_17a
 
 # Active Configuration
 DEFAULTCONF=Debug
