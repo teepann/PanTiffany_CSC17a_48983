@@ -70,7 +70,7 @@ void showMovie(MovieData *movieData){
  * asks user for data about movie
  */
 void inputData(MovieData *movieData){
-    cout << "What is the title of the movie 1?";
+    cout << "What is the title of the movie?";
     cin >> movieData->title;
     cout << "What is the director's name?";
     cin >> movieData->director;

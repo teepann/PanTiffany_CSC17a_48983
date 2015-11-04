@@ -33,8 +33,7 @@ int main(int argc, char** argv) {
                                   NULL, NULL, NULL, NULL, NULL,
                                   NULL, NULL, NULL, NULL, NULL};
     
-        // Each element of arrPtr is a pointer to int. Make each
-    // element point to an element in the donations array.
+    //each element point to an element in the donations array.
     for (int count = 0; count < NUM_DONATIONS; count++)
         arrPtr[count] = &donations[count];
 
@@ -53,7 +52,7 @@ int main(int argc, char** argv) {
 }
 /* 
  * Definition of function arrSelectSort.
- * This function performs an ascending order selection sort
+ * Makes ascending order selection sort
  * on arr, which is an array of pointers. Each element of 
  * the array points to an element of a 2nd array. After the
  * sort, arr will point to the elements of the 2nd array in 
@@ -85,8 +84,8 @@ void arrSelectSort(int *arr[], int size) {
  */
 void showArray(const int arr[], int size)
 {
-    for(int count = 0; count < size; count++)
-        cout<<arr[count]<<" ";
+    for(int i = 0; i < size; i++)
+        cout<<arr[i]<<" ";
     cout<<endl;
 }
 
@@ -95,9 +94,9 @@ void showArray(const int arr[], int size)
  * This function displays the contents of the array points to
  * by arr. size is the number of elements.
  */
-void showArrptr(int *arr[], int size)
+void showArrPtr(int *arr[], int size)
 {
-    for (int count = 0; count < size; count++)
-        cout<< *(arr[count]) << " ";
+    for (int i = 0; i < size; i++)
+        cout<< *(arr[i]) << " ";
     cout<<endl;
 }

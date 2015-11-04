@@ -40,6 +40,19 @@ int main(int argc, char** argv) {
     
     //prompt user for individual donation amounts
     cout << "Please enter donation amount: \n";
+    
+    for (int i = 0; i < numDonations; i++) {
+        cout << "Donation #" << i + 1 << ": ";
+        
+        cin >> *(donations + i);
+
+        if (*(donations + i) < 0) {
+            *(donations + i) = 0;
+            cout << "The donation was automatically resize to 0" << endl;
+        }
+
+    }
+    /*
     for (int i = 0; i < numDonations; i++) {
         cout << "Donation #" << i + 1 << ": ";
         //input validation for donation amount
@@ -49,7 +62,7 @@ int main(int argc, char** argv) {
                 cout << "Please enter a positive amount: \n";
         } while (amount < 0);
         *(donations + i) = amount;
-    }
+    }*/
     
     //Each element of arrPtr is a pointer to int, make each element point
     //to an element in the donations array.
@@ -79,21 +92,17 @@ int main(int argc, char** argv) {
  * sort, arr will point to the elements of the 2nd array in 
  * ascending order.
  */
-void arrSelectSort(int *arr[], int size)
-{
+void arrSelectSort(int *arr[], int size) {
     int startScan, minIndex;
     int *minElem;
-    
-    for(startScan = 0; startScan<(size-1); startScan++)
-    {
-        minIndex= startScan;
-        minElem= arr[startScan];
-        for(int index= startScan + 1; index< size; index++)
-        {
-            if(*(arr[index])< *minElem)
-            {
-                minElem= arr[index];
-                minIndex= index;
+
+    for (startScan = 0; startScan < (size - 1); startScan++) {
+        minIndex = startScan;
+        minElem = arr[startScan];
+        for (int index = startScan + 1; index < size; index++) {
+            if (*(arr[index]) < *minElem) {
+                minElem = arr[index];
+                minIndex = index;
             }
         }
         arr[minIndex] = arr[startScan];
@@ -108,8 +117,8 @@ void arrSelectSort(int *arr[], int size)
  */
 void showArray(const int arr[], int size)
 {
-    for(int count = 0; count < size; count++)
-        cout<<arr[count]<<" ";
+    for(int i = 0; i < size; i++)
+        cout<<arr[i]<<" ";
     cout<<endl;
 }
 
@@ -118,9 +127,9 @@ void showArray(const int arr[], int size)
  * This function displays the contents of the array points to
  * by arr. size is the number of elements.
  */
-void showArrptr(int *arr[], int size)
+void showArrPtr(int *arr[], int size)
 {
-    for (int count = 0; count < size; count++)
-        cout<< *(arr[count]) << " ";
+    for (int i = 0; i < size; i++)
+        cout<< *(arr[i]) << " ";
     cout<<endl;
 }

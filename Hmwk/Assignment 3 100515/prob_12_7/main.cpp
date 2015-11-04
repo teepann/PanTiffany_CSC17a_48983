@@ -26,21 +26,14 @@ string changeCase(string);
 
 //Execution begins here
 int main(int argc, char** argv) {
-   //Variable declarations
-    //delimiter of a sentence
-    const char DELIMITER = '.';
-    //string delimiter of a sentence
-    const string SDELIMITER = ".";
-    //input file name
-    string ifileName;
-    //output file name
-    string ofileName;
-    //input file
-    ifstream ifile;
-    //output file
-    ofstream ofile;
-    //sentence from file
-    string sentence;
+    //Variable declarations
+    const char DELIMITER = '.'; //delimiter for sentence
+    const string SDELIMITER = ".";//string delimiter of a sentence
+    string ifileName;//input file name
+    string ofileName;//output file name
+    ifstream ifile; //input file
+    ofstream ofile;//output file
+    string sentence;//sentence from file
     
     cout<< "Please enter file name: ";
     getline(cin, ifileName);

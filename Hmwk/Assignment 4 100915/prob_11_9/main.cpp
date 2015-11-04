@@ -41,7 +41,9 @@ void showSpeakerData(Speaker **, const int);
 //Execution begins here
 int main(int argc, char** argv) {
     //Variable declarations
-    const int NUM_SPEAKERS = 10; //number of speakers
+    int NUM_SPEAKERS;
+    cout << "How many speakers are there? ";
+    cin >> NUM_SPEAKERS;
     Speaker *speakers[NUM_SPEAKERS]; //array of speakers
     
     int option; //user's choice
@@ -49,6 +51,7 @@ int main(int argc, char** argv) {
     for (int i = 0; i< NUM_SPEAKERS; i++){
         cout << "\nPlease enter data for speaker #" << i+1 << endl;
         speakers[i] = new Speaker;
+        cin.ignore();
         inputSpeakerData(speakers[i]);
     }
     //menu for speakers' bureau

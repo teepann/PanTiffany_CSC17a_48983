@@ -51,19 +51,19 @@ int main(int argc, char** argv) {
     east.division = "East";
     west.division = "West";
     north.division = "North";
-    south.division = "South";
+    //south.division = "South";
     
     //input values for each division
     input(&east);
     input(&west);
     input(&north);
-    input(&south);    
+    //input(&south);    
     
     //display total and average sales
     showSales(&east);
     showSales(&west);
     showSales(&north);
-    showSales(&south);
+    //showSales(&south);
     
    return 0;
 }
