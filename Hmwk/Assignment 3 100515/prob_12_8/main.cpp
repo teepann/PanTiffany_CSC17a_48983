@@ -65,7 +65,7 @@ void arrayToFile (const char* fileName, int* ary, const int size){
         aryToFile.close();
     }
     else
-        cerr< "File I/O error!";
+        cerr << "File I/O error!";
 }
 
 /* 
