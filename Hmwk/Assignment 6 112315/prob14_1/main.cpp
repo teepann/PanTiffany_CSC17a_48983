@@ -7,7 +7,7 @@
  * amounts in the range 0-9999 into an English description of the number. For example,
  * the number 713 would be translated into the string seven hundred thirteen. The class
  * should have a single integer member variable: int number;
- * and a static array of string objects that specify how to tranlate key dollar amounts
+ * and a static array of string objects that specify how to translate key dollar amounts
  * into the desired format. ie, you might use static strings such as:
  * string lessThan20[20] = {"zero", "one",..., "nineteen"};
  * string hundred = "hundred";
@@ -24,6 +24,7 @@ its English description.
 using namespace std;
 
 //User Libraries
+#include "Numbers.h"
 
 //Global Constants
 
@@ -31,12 +32,19 @@ using namespace std;
 
 //Execution begins here
 int main(int argc, char** argv) {
-    //Variable declarations
+    Numbers n;
+    int number = 0;
+    int length = 0;
+    do {
+        cout << "Please a number from 0 to 9999: ";
+	cin >> number;
+	n.setNum(number);
+    } while (number < 0 || number > 9999);
+    length = n.calcVal();
+
+    cout << "The number: " << n.getNum() << endl;;
+    n.printRes(length);
+    cout << endl;
 
     return 0;
 }
-
-/* 
- * Definition of function.
- *
- */
