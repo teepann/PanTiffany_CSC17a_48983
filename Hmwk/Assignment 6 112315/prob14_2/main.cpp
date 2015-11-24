@@ -24,6 +24,7 @@ its English description.
 
 //System Libraries
 #include <iostream>
+#include "DayOfYear.h"
 using namespace std;
 
 //User Libraries
@@ -34,12 +35,7 @@ using namespace std;
 
 //Execution begins here
 int main(int argc, char** argv) {
-    //Variable declarations
-
+    DayOfYear *date = new DayOfYear();
+    date->print();
     return 0;
 }
-
-/* 
- * Definition of function.
- *
- */

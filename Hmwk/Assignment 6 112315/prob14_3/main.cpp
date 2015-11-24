@@ -20,7 +20,10 @@ year.
  */
 
 //System Libraries
+//System Libraries
 #include <iostream>
+#include "DayOfYear.h"
+
 using namespace std;
 
 //User Libraries
@@ -31,12 +34,15 @@ using namespace std;
 
 //Execution begins here
 int main(int argc, char** argv) {
-    //Variable declarations
-
+    string m;
+    int d;
+    cout << "Please enter a month: ";
+    cin >> m;
+    cout << "Please enter a day of the month: ";
+    cin >> d;
+    DayOfYear date1(m,d);
+    DayOfYear date2;
+    date2 = date1--;
+    date2.print();
     return 0;
 }
-
-/* 
- * Definition of function.
- *
- */
