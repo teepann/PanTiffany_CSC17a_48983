@@ -21,23 +21,23 @@ SavingsAccount::SavingsAccount(float balance){
   FreqWithDraw=0;
   FreqDeposit=0;
 }
-void SavingsAccount::Transaction(float tran){
-  if(tran>0){
-    Balance+=Deposit(tran);
+void SavingsAccount::Transaction(float trans){
+  if(trans>0){
+    Balance+=Deposit(trans);
   }
   else
-    if(Balance+tran>0)
-      Balance+=Withdraw(tran);
+    if(Balance+trans>0)
+      Balance+=Withdraw(trans);
     else
       cout<<"WithDraw not Allowed\n";
 }
-float SavingsAccount::Withdraw(float tran){
+float SavingsAccount::Withdraw(float trans){
   FreqWithDraw++;
-  return tran;
+  return trans;
 }
-float SavingsAccount::Deposit(float tran){
+float SavingsAccount::Deposit(float trans){
   FreqDeposit++;
-  return tran;
+  return trans;
 }
 float SavingsAccount::Total(float intrt=0, int year=0){
   float temp=Balance;
@@ -52,7 +52,6 @@ float SavingsAccount::TotalRecursive(float intrt=0, int year=7){
     return Balance;
   }
   else
-    //cout<<"B="<<Balance<<endl;
     return TotalRecursive(intrt, year-1);
 }
 void SavingsAccount::toString(){

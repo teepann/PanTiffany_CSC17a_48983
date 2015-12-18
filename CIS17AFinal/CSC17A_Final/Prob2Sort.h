@@ -8,13 +8,8 @@
 #ifndef PROB2SORT_H
 #define	PROB2SORT_H
 
-
 #include <iostream>
-#include <algorithm>
-using namespace std; 
-
-//This class sorts arrays either ascending or descending
-
+using namespace std;
 template<class T>
 class Prob2Sort
 {
@@ -25,10 +20,9 @@ public:
     ~Prob2Sort(){delete []index;};              //Destructor
     T * sortArray(const T*,int,bool);           //Sorts a single column array int size
     T * sortArray(const T*,int,int,int,bool);   //Sorts a 2 dimensional array represented as a 1 dim array
-};
-
+}; 
 template<class T>
-T *Prob2Sort<T>::sortArray(const T* str, int size, bool as){
+T *Prob2Sort<T>::sortArray(const T* str, int size, bool ascend){
   T *test = new T[size];
   T temp;
   for(int i=0;i<size;i++){
@@ -37,7 +31,7 @@ T *Prob2Sort<T>::sortArray(const T* str, int size, bool as){
   bool swap;
   do{
     for(int i=0;i<size-1;i++){
-      if(as==true){
+      if(ascend==true){
         if(test[i]>test[i+1]){
           swap=true;
           temp=test[i];
@@ -58,7 +52,7 @@ T *Prob2Sort<T>::sortArray(const T* str, int size, bool as){
   return test;
 }
 template<class T>
-T *Prob2Sort<T>::sortArray(const T *str,int y,int x,int col,bool as){
+T *Prob2Sort<T>::sortArray(const T *str,int y,int x,int col,bool ascend){
   T *test = new T[x*y];
   for(int i=0;i<x*y;i++){
     test[i]=str[i];
@@ -69,7 +63,7 @@ T *Prob2Sort<T>::sortArray(const T *str,int y,int x,int col,bool as){
   do{
     swap=false;
     for(int i=0;i<y-1;i++){
-      if(as==true){
+      if(ascend==true){
         if(test[i*x+col]>test[(i+1)*x+col]){
           swap=true;
           for(int j=0;j<x;j++){

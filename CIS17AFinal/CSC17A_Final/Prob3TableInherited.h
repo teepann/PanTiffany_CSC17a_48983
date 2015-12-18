@@ -12,12 +12,12 @@
 
 template<class T>
 class Prob3TableInherited:public Prob3Table<T>{
-	protected:
-		T *augTable;                                  //Augmented Table with sums
-	public:
-		Prob3TableInherited(char *,int,int);          //Constructor
-		~Prob3TableInherited(){delete [] augTable;};  //Destructor
-		T *getAugTable()const{return augTable;}; 
+protected:
+    T *augTable;                                  //Augmented Table with sums
+public:
+    Prob3TableInherited(char *,int,int);          //Constructor
+    ~Prob3TableInherited(){delete [] augTable;};  //Destructor
+    T *getAugTable()const{return augTable;}; 
 };
 
 template <class T>
@@ -34,7 +34,6 @@ Prob3TableInherited<T>::Prob3TableInherited(char* text, int rows, int cols):Prob
   }
   augTable[rows*(cols+1)+cols]=this->grandTotal;
 }
-
 
 #endif	/* PROB3TABLEINHERITED_H */
 

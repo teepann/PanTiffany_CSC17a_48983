@@ -8,7 +8,7 @@
 //Library includes
 #include <iostream>
 #include <fstream>
-
+#include <stdlib.h>
 #include "Prob1Random.h"
 #include "Prob2Sort.h"
 #include "Prob3Table.h"
@@ -45,9 +45,8 @@ int main(int argv,char *argc[]){
         case 4:    problem4();break;
         case 5:    problem5();break;
         case 6:    problem6();break;
-        case 7:    problem7();break;
         default:   def(inN);}
-    }while(inN>=1&&inN<=7);
+    }while(inN>=1&&inN<=6);
     return 0;//If midterm not perfect, return something other than 1
 }
 
@@ -59,7 +58,6 @@ void Menu(){
     cout<<"Type 4 for problem 4"<<endl;
     cout<<"Type 5 for problem 5"<<endl;
     cout<<"Type 6 for problem 6"<<endl;
-    cout<<"Type 7 for problem 7"<<endl;
     cout<<"Type anything else to exit \n"<<endl;
 }
 
@@ -104,22 +102,21 @@ void problem2(){
 	bool ascending=true;
 	ifstream infile;
 	infile.open("Problem2.txt",ios::in);
-	char *ch2=new char[10*17];
+	char *ch2=new char[10*16];
 	char *ch2p=ch2;
-  int i=0;
-	while(infile.get(ch2[i])){cout<<ch2[i];i++;}
+	while(infile.get(*ch2)){cout<<*ch2;ch2++;}
 	infile.close();
 	cout<<endl;
 	cout<<"Sorting on which column"<<endl;
 	int column;
 	cin>>column;
-	char *zc=rc.sortArray(ch2p,10,17,column,ascending);
+	char *zc=rc.sortArray(ch2p,10,16,column,ascending);
 	for(int i=0;i<10;i++)
 	{
-            for(int j=0;j<17;j++)
-            {
-                cout<<zc[i*17+j];
-            }
+		for(int j=0;j<16;j++)
+		{
+			cout<<zc[i*16+j];
+		}
 	}
 	delete []zc;
 	cout<<endl;
@@ -233,14 +230,6 @@ void problem6(){
             <<"Binary: " <<"1011001.01001" <<endl
             <<"Octal: " <<"131.2314" <<endl
             <<"Hex: " <<"59.4CC" <<endl <<endl;
-}
-
-/* 
- * Definition of function.
- *
- */
-void problem7(){
-    cout<<"In problem # 6"<<endl<<endl;
 }
 
 void def(int inN){
