@@ -10,6 +10,7 @@
 #include "Tile.h"
 #include "Grid.h"
 
+template <class T>
 class BackupGrid : public Tile {
 public:
     BackupGrid();
@@ -23,15 +24,15 @@ public:
     void spawn();
     void findGreatestTile();
     
-    void setMaxTile(int);
-    int getMaxTile();    
+    void setMaxTile(T);
+    T getMaxTile();    
     void setScoreRound(int);
     int getScoreRound();
     void setScore(int);
     int getScore();
     
 private:
-    int bmaxTile; //maximum tile  
+    T bmaxTile; //maximum tile  
     int bscoreRound; //score of the current round
     int bscore; //running total of score
 };

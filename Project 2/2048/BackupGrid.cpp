@@ -7,54 +7,64 @@
 
 #include "BackupGrid.h"
 
-BackupGrid::BackupGrid() {
+template <class T>
+BackupGrid<T>::BackupGrid() {
     bmaxTile = 0;
     bscoreRound = 0;
     bscore = 0;
 }
 
 //copy constructor
-BackupGrid::BackupGrid(const BackupGrid& orig) {
+template <class T>
+BackupGrid<T>::BackupGrid(const BackupGrid& orig) {
     bmaxTile = orig.bmaxTile;
     bscoreRound = orig.bscoreRound;
     bscore = orig.bscore;
 }
 
-BackupGrid::~BackupGrid() {
+template <class T>
+BackupGrid<T>::~BackupGrid() {
 }
 
 /*updates the current tile to a new value*/
-void BackupGrid::updateTile()
+template <class T>
+void BackupGrid<T>::updateTile()
 {
     setValue(getValue()*2);
 }
 
-void BackupGrid::setMaxTile(int m)
+template <class T>
+void BackupGrid<T>::setMaxTile(T m)
 {
     bmaxTile = m;
 }
 
-int BackupGrid::getMaxTile()
+template <class T>
+T BackupGrid<T>::getMaxTile()
 {
     return bmaxTile;
 }
 
-void BackupGrid::setScoreRound(int s)
+template <class T>
+void BackupGrid<T>::setScoreRound(int s)
 {
     bscoreRound = s;
 }
 
-int BackupGrid::getScoreRound()
+template <class T>
+int BackupGrid<T>::getScoreRound()
 {
     return bscoreRound;
 }
 
-void BackupGrid::setScore(int s)
+template <class T>
+void BackupGrid<T>::setScore(int s)
 {
     bscore = s;
 }
 
-int BackupGrid::getScore()
+template <class T>
+int BackupGrid<T>::getScore()
 {
     return bscore;
 }
@@ -63,7 +73,8 @@ int BackupGrid::getScore()
  * resets score and maxTile and each element of grid to 0
  * spawns 2 more tiles
  */
-void BackupGrid::initializeGrid()
+template <class T>
+void BackupGrid<T>::initializeGrid()
 {
     int i, j;
 
@@ -83,7 +94,8 @@ void BackupGrid::initializeGrid()
  * spawns a new tile of value 2 or 4 at an arbitrary location on the grid
  * that is not currently occupied by a number that is nonzero
  */
-void BackupGrid::spawn()
+template <class T>
+void BackupGrid<T>::spawn()
 {
     int i, j;
 
@@ -98,11 +110,13 @@ void BackupGrid::spawn()
 /* Definition of function findGreatestTile
  * loops through grid to find maxTile
  */
-void BackupGrid::findGreatestTile()
+template <class T>
+void BackupGrid<T>::findGreatestTile()
 {
     for (int i = 0; i<4; i++)
         for (int j = 0; j<4; j++)
             if (bgrid[i][j].getValue()>bmaxTile)
                 bmaxTile = bgrid[i][j].getValue();
 }
+
 

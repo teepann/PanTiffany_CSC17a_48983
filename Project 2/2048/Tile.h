@@ -24,7 +24,8 @@ public:
     void newTile();
     
 protected:
-    int value;    
+    int value;
+    
 };
 
 #endif	/* TILE_H */
